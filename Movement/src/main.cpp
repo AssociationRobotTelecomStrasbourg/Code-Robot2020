@@ -3,12 +3,13 @@
 #include "turn_and_go.h"
 #include "binserial.h"
 
+#include "MicrosServo.h"
 
 // #include "lidar.h"
 // #include "odometry.h"
 
 float distance = 100;
-int state = 0;
+int state;
 
 TurnAndGo turn_and_go;
 
@@ -28,19 +29,19 @@ void move(int r, int theta){
     }
 }
 
+int servo_state = 0;
+unsigned int servo_idle_time = 20000;
+unsigned int servo_value = 2000;
+unsigned int servo_timer;
 
+MicrosServo servo_gauche;
 
-//servo_gauche: 40° = deployé
-
-void switch_led(){
-    state = !state;
-}
 
 
 void setup() {
     // Setup serial link
-    // Serial.begin(9600);
-    // while(!Serial);
+    Serial.begin(9600);
+    while(!Serial);
 
     //***INIT LED TEENSY Mouvement
     pinMode(LED_BUILTIN, OUTPUT);
@@ -56,14 +57,29 @@ void setup() {
     turn_and_go.setMaximumSpeed(200);
     turn_and_go.setAcceleration(500);
     
+    //***SETUP SERVO GAUCHE
+    servo_gauche.assign(SERVO3);
+
     //**SETUP SAFETY DELAY
     delay(2000);
+
+    //**LED status update
     digitalWrite(LED_BUILTIN,LOW);
     digitalWrite(DEBUG_LED1, LOW);
     digitalWrite(DEBUG_LED2, LOW);
+    Serial.println("END OF SETUP");
 }
 
 void loop() {
-    
-
+    /* digitalWrite(SERVO3, servo_state);
+    if(micros()%servo_idle_time == 0 && servo_state == 0){
+        servo_state = 1;
+        servo_timer = micros();
+        Serial.println("1");
+    }
+    else if(micros()-servo_timer > servo_value && servo_state == 1){
+        servo_state = 0;
+        Serial.println("0");
+    } */
+    servo_gauche.write(1000);
 }
