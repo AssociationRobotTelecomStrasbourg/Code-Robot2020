@@ -1,0 +1,12 @@
+[submodule "lib/TMC2130Stepper"]
+	path = lib/TMC2130Stepper
+	url = https://github.com/AssociationRobotTelecomStrasbourg/TMC2130Stepper.git
+[submodule "lib/TeensyStep"]
+	path = lib/TeensyStep
+	url = https://github.com/AssociationRobotTelecomStrasbourg/TeensyStep.git
+[submodule "lib/vl53l0x"]
+	path = lib/vl53l0x
+	url = https://github.com/AssociationRobotTelecomStrasbourg/vl53l0x-arduino.git
+[submodule "lib/binserial"]
+	path = lib/binserial
+	url = https://github.com/AssociationRobotTelecomStrasbourg/BinSerial.git
