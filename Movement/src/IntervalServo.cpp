@@ -1,6 +1,7 @@
 #include "IntervalServo.h"
 
 IntervalTimerServo::IntervalTimerServo(){
+
     timerState = 0;
     inWriteLoop = 0;
     position = 0;
@@ -26,7 +27,7 @@ void IntervalTimerServo::release(){
 }
 
 void IntervalTimerServo::update_low(){
-    this->servoTimer_.begin(this->update_high,this->idle_time);
+    this->servoTimer_.begin(update_high,this->idle_time);
     digitalWrite(attachedPin, LOW);
 }
 void IntervalTimerServo::update_high(){
