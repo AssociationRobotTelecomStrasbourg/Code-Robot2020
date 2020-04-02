@@ -6,6 +6,8 @@
 #define SERVO1 3
 #define SERVO2 4
 #define SERVO3 5
+#define DEBUG_LED1 16
+#define DEBUG_LED2 17
 #define SCK 13
 #define SDO 12
 #define SDI 11
